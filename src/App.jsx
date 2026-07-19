@@ -1,15 +1,15 @@
 import React, { useState, useCallback, memo } from 'react';
 import './App.css';
+import Blog from './pages/Blog';
 
-
-const Header = memo(() => (
+const Header = memo(({ onNavigate }) => (
   <header className="header">
-    <div className="logo">My App</div>
+    <div className="logo" onClick={() => onNavigate('home')}>My App</div>
     <nav>
       <ul className="nav-links">
-        <li>Home</li>
+        <li onClick={() => onNavigate('home')}>Home</li>
         <li>Features</li>
-        <li>Blog</li>
+        <li onClick={() => onNavigate('blog')}>Blog</li>
         <li>Pricing</li>
         <li>About</li>
         <li>Skills</li>
@@ -48,6 +48,7 @@ const Footer = memo(() => (
 
 function App() {
   const [clickCount, setClickCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState('home');
 
   // Dùng useCallback để giữ nguyên reference của hàm giữa các lần render
   const handleCtaClick = useCallback(() => {
@@ -56,10 +57,11 @@ function App() {
 
   return (
     <div className="app-container">
-      <Header />
+      <Header onNavigate={setCurrentPage} />
 
-      <main>
-        <section className="hero">
+      {currentPage === 'home' ? (
+        <main>
+          <section className="hero">
           <h1>Welcome to My Awesome App</h1>
           <p>
             Build stunning and modern user interfaces with React and Vite. 
@@ -71,7 +73,12 @@ function App() {
         </section>
 
         <Features />
-      </main>
+        </main>
+      ) : currentPage === 'blog' ? (
+        <main>
+          <Blog />
+        </main>
+      ) : null}
 
       <Footer />
     </div>
