@@ -1,8 +1,7 @@
 import React, { useState, useCallback, memo } from 'react';
 import './App.css';
 
-// Tối ưu hóa: Tách các thành phần tĩnh ra và dùng React.memo 
-// để tránh re-render không cần thiết khi state (clickCount) thay đổi.
+
 const Header = memo(() => (
   <header className="header">
     <div className="logo">My App</div>
@@ -11,6 +10,8 @@ const Header = memo(() => (
         <li>Home</li>
         <li>Features</li>
         <li>About</li>
+        <li>Skills</li>
+  <li>Experience</li>
         <li>Contact</li>
       </ul>
     </nav>
