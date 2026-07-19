@@ -10,7 +10,8 @@ const Header = memo(() => (
       <ul className="nav-links">
         <li>Home</li>
         <li>Features</li>
-        <li>About</li>
+        <li>Blog</li>
+        <li>Pricing</li>
         <li>Contact</li>
       </ul>
     </nav>
